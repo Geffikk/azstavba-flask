@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['POST'])
-def hello_world():  # put application's code here
+def hello_world_post():  # put application's code here
     data = request.get_json(force=True)
     js = str(request.json)
     js = json.loads(js)
@@ -23,7 +23,7 @@ def hello_world():  # put application's code here
     body = """
     Meno: """ + js["name"] + """
     Email: """ + js['email'] + """
-    
+
     """ + js['message']
 
     text = MIMEText(body, 'plain')
@@ -41,9 +41,9 @@ def hello_world():  # put application's code here
 
 
 @app.route('/', methods=['GET'])
-def hello_world():  # put application's code here
+def hello_world_get():  # put application's code here
     return "Hello Klaudika!!!"
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+    app.run()
